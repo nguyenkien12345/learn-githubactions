@@ -34,7 +34,6 @@ jobs:
     # Cài đặt các phụ thuộc của dự án từ tệp package-lock.json hoặc npm-shrinkwrap.json. 
     - run: npm i
     # npm run build: Để build dự án, --if-present đảm bảo rằng lệnh chỉ chạy nếu tệp package.json của dự án định nghĩa một script "build".
-    - run: npm run build 
-    # --if-present
+    - run: npm run build --if-present
     # Thực hiện các bài kiểm tra hoặc kiểm tra tự động cho ứng dụng. Các kết quả kiểm tra thường được báo cáo sau khi quy trình này hoàn thành.
     # - run: npm test
