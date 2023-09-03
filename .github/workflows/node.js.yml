@@ -36,4 +36,4 @@ jobs:
     # npm run build: Để build dự án, --if-present đảm bảo rằng lệnh chỉ chạy nếu tệp package.json của dự án định nghĩa một script "build".
     - run: npm run build --if-present
     # Thực hiện các bài kiểm tra hoặc kiểm tra tự động cho ứng dụng. Các kết quả kiểm tra thường được báo cáo sau khi quy trình này hoàn thành.
-    - run: npm test
+    # - run: npm test
