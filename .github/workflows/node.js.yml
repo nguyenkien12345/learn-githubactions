@@ -1,0 +1,39 @@
+name: Learn CI CD
+
+on:
+  push:
+    branches: [ "main", "master" ]
+
+jobs:
+  build:
+
+    runs-on: self-hosted
+
+    strategy:
+      # Chiến lược là matrix, có nghĩa là công việc sẽ được chạy trên nhiều phiên bản Node.js khác nhau.
+      matrix:
+        # Xác định các phiên bản Node.js mà công việc sẽ được chạy, công việc sẽ được chạy 2 lần, một lần cho mỗi phiên bản Node.js. 
+        # Mỗi lần chạy sẽ được chạy trong môi trường riêng của nó, với phiên bản Node.js tương ứng.
+        node-version: [14.x, 16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    # Sử dụng hành động (action) có sẵn trong Github actions của GitHub.
+    # Sao chép mã nguồn của dự án từ kho lưu trữ GitHub vào máy chủ nơi quy trình GitHub Actions đang thực thi
+    - uses: actions/checkout@v3 
+    # Đặt tên cho step mô tả mục tiêu của nó
+    - name: Use Node.js ${{ matrix.node-version }}
+      # Sử dụng hành động actions/setup-node@v3 để cài đặt Node.js trên trình chạy. 
+      # Tham số node-version được sử dụng để chỉ định phiên bản Node.js cần cài đặt.
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        # Lưu trữ cache cho npm. Việc này giúp tăng tốc quy trình bằng cách sử dụng lại 
+        # các gói npm đã tải về trước đó từ cache thay vì tải lại từ npm registry.
+        cache: 'npm'
+    # Cài đặt các phụ thuộc của dự án từ tệp package-lock.json hoặc npm-shrinkwrap.json. 
+    - run: npm i
+    # npm run build: Để build dự án, --if-present đảm bảo rằng lệnh chỉ chạy nếu tệp package.json của dự án định nghĩa một script "build".
+    - run: npm run build --if-present
+    # Thực hiện các bài kiểm tra hoặc kiểm tra tự động cho ứng dụng. Các kết quả kiểm tra thường được báo cáo sau khi quy trình này hoàn thành.
+    - run: npm test
