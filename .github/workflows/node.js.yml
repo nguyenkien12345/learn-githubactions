@@ -20,12 +20,12 @@ jobs:
     steps:
     # Sử dụng hành động (action) có sẵn trong Github actions của GitHub.
     # Sao chép mã nguồn của dự án từ kho lưu trữ GitHub vào máy chủ nơi quy trình GitHub Actions đang thực thi
-    - uses: actions/checkout@v3 
+    - uses: actions/checkout@v2
     # Đặt tên cho step mô tả mục tiêu của nó
     - name: Use Node.js ${{ matrix.node-version }}
-      # Sử dụng hành động actions/setup-node@v3 để cài đặt Node.js trên trình chạy. 
+      # Sử dụng hành động actions/setup-node@v2 để cài đặt Node.js trên trình chạy. 
       # Tham số node-version được sử dụng để chỉ định phiên bản Node.js cần cài đặt.
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
         # Lưu trữ cache cho npm. Việc này giúp tăng tốc quy trình bằng cách sử dụng lại 
