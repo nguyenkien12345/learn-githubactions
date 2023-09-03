@@ -14,18 +14,18 @@ jobs:
       matrix:
         # Xác định các phiên bản Node.js mà công việc sẽ được chạy, công việc sẽ được chạy 2 lần, một lần cho mỗi phiên bản Node.js. 
         # Mỗi lần chạy sẽ được chạy trong môi trường riêng của nó, với phiên bản Node.js tương ứng.
-        node-version: [14.x, 16.x]
+        node-version: [16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     # Sử dụng hành động (action) có sẵn trong Github actions của GitHub.
     # Sao chép mã nguồn của dự án từ kho lưu trữ GitHub vào máy chủ nơi quy trình GitHub Actions đang thực thi
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3 
     # Đặt tên cho step mô tả mục tiêu của nó
     - name: Use Node.js ${{ matrix.node-version }}
-      # Sử dụng hành động actions/setup-node@v2 để cài đặt Node.js trên trình chạy. 
+      # Sử dụng hành động actions/setup-node@v3 để cài đặt Node.js trên trình chạy. 
       # Tham số node-version được sử dụng để chỉ định phiên bản Node.js cần cài đặt.
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         # Lưu trữ cache cho npm. Việc này giúp tăng tốc quy trình bằng cách sử dụng lại 
