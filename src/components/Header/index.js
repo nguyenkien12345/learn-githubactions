@@ -65,7 +65,7 @@ const Header = () => {
             <Row className="d-flex align-items-center justify-content-center">
                 <Col sm={6} md={6} lg={6} xl={6}>
                     <div className="header-left">
-                        <p className="fs-3 fw-bolder text-dark text-center">Quản lý nhiệt độ, độ ẩm, bụi mịn, không khí</p>
+                        <p className="fs-3 fw-bolder text-dark text-center">NGUYỄN TRUNG KIÊN</p>
                     </div>
                 </Col>
 
